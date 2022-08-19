@@ -1,0 +1,10 @@
+- name: installing php
+  yum: 
+    name: 
+       - php
+       - php-mysql
+    state: latest
+- name: copying php file to /var/www/html
+  copy:
+    src: /root/lamp_project/ansible/index.php
+    dest: /var/www/html

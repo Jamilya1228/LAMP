@@ -1,0 +1,10 @@
+- name: installing mysql(MariaDB)
+  yum: 
+    name: mariadb-server
+    state: latest
+    update_cache: yes
+- name: starting and enabling mysql
+  service:
+    name: mariadb
+    state: started
+    enabled: yes       

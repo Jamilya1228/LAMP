@@ -1,0 +1,38 @@
+---
+
+- name: lamp setup
+  hosts: servers
+  tasks: 
+    - name: installing apache
+      yum: 
+        name: httpd
+        state: latest
+    - name: installing mysql(MariaDB)
+      yum: 
+        name: mariadb-server
+        state: latest
+        update_cache: yes
+    - name: installing php
+      yum: 
+        name: 
+          - php
+          - php-mysql
+        state: latest
+    - name: starting and enabling httpd
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: starting and enabling mysql
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+    - name: copying php file to /var/www/html
+      copy:
+        src: /root/lamp_project/ansible/index.php
+        dest: /var/www/html
+
+
+
+

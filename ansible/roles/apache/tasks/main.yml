@@ -1,0 +1,10 @@
+- name: installing apache
+  yum: 
+    name: httpd
+    state: latest
+  notify: restart_apache
+- name: starting and enabling httpd
+  service:
+    name: httpd
+    state: started
+    enabled: yes

@@ -1,0 +1,13 @@
+---
+
+- name: lamp setup
+  hosts: servers
+  roles: 
+    - apache
+    - mysql
+    - php
+- handlers: 
+  - name: restart_apache
+    service:
+      name: httpd
+      state: restarted
